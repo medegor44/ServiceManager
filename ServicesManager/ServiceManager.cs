@@ -6,51 +6,51 @@ namespace ServicesManager
 {
     public class ServiceManager
     {
-        private Dictionary<string, IComputer> Computers { get; } = new Dictionary<string, IComputer>();
-        private IProvider Provider { get; }
+        private Dictionary<string, IComputer> _computers = new Dictionary<string, IComputer>();
+        private IProvider _provider;
 
         public ServiceManager(IProvider provider)
         {
-            Provider = provider;
+            _provider = provider;
         }
 
         public void AddComputer(string computerName)
         {
-            AddComputer(Provider.FindComputer(computerName));
+            AddComputer(_provider.FindComputer(computerName));
         }
 
         public void RemoveComputer(string computerName)
         {
-            Computers.Remove(computerName);
+            _computers.Remove(computerName);
         }
 
         private void AddComputer(IComputer computer)
         {
-            Computers.Add(computer.Name, computer);
+            _computers.Add(computer.Name, computer);
         }
 
         public void StopServiceAt(string computerName, string serviceName)
         {
-            if (!Computers.ContainsKey(computerName))
+            if (!_computers.ContainsKey(computerName))
                 return;
 
-            Computers[computerName].StopService(serviceName);
+            _computers[computerName].StopService(serviceName);
         }
 
         public void RunServiceAt(string computerName, string serviceName)
         {
-            if (!Computers.ContainsKey(computerName))
+            if (!_computers.ContainsKey(computerName))
                 return;
 
-            Computers[computerName].RunService(serviceName);
+            _computers[computerName].RunService(serviceName);
         }
 
         public void RestartServiceAt(string computerName, string serviceName)
         {
-            if (!Computers.ContainsKey(computerName))
+            if (!_computers.ContainsKey(computerName))
                 return;
 
-            Computers[computerName].RestartService(serviceName);
+            _computers[computerName].RestartService(serviceName);
         }
     }
 }
