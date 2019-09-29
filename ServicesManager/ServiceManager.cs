@@ -16,12 +16,25 @@ namespace ServicesManager
 
         public void AddComputer(string computerName)
         {
-            AddComputer(_provider.FindComputer(computerName));
+            AddComputer(_provider.GetComputer(computerName));
         }
 
         public void RemoveComputer(string computerName)
         {
             _computers.Remove(computerName);
+        }
+
+        public IEnumerable<IComputer> EnumerateComputers()
+        {
+            return _computers.Values;
+        }
+
+        public IComputer GetComputer(string name)
+        {
+            if (!_computers.ContainsKey(name))
+                return null;
+
+            return _computers[name];
         }
 
         private void AddComputer(IComputer computer)

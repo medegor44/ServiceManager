@@ -14,7 +14,7 @@ namespace ServicesManager.MockupNetwork
                 _computers.Add(comp.Name, comp);
         }
 
-        public IComputer FindComputer(string name)
+        public IComputer GetComputer(string name)
         {
             if (!_computers.ContainsKey(name))
                 return null;

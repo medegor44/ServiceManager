@@ -5,7 +5,7 @@ namespace ServicesManager.Providers
 {
     public interface IProvider
     {
-        IComputer FindComputer(string name);
+        IComputer GetComputer(string name);
         IEnumerable<IComputer> EnumerateComputers();
     }
 }
