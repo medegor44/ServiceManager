@@ -39,6 +39,12 @@ namespace ServicesManager.MockupNetwork
             _services[name].Restart();
         }
 
+        public IEnumerable<IService> EnumerateServices()
+        {
+            foreach (var serv in _services.Values)
+                yield return serv;
+        }
+
         public string Name { get; }
     }
 }
