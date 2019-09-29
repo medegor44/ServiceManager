@@ -41,10 +41,22 @@ namespace ServicesManager.MockupNetwork
 
         public IEnumerable<IService> EnumerateServices()
         {
-            foreach (var serv in _services.Values)
-                yield return serv;
+            return _services.Values;
         }
 
         public string Name { get; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Computer c)
+                return Name == c.Name && _services == c._services;
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() ^ _services.GetHashCode();
+        }
     }
 }

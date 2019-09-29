@@ -34,12 +34,10 @@ namespace ServicesManager.MockupNetwork
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Service))
-                return false;
-
-            var s = (Service)obj;
-
-            return s.Name == Name && s.State == State;
+            if (obj is Service s)
+                return s.Name == Name && s.State == State;
+            
+            return false;
         }
 
         public override int GetHashCode()
