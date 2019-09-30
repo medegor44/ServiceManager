@@ -42,7 +42,7 @@ namespace ServicesManager.MockupNetwork
 
         public override int GetHashCode()
         {
-            return Name.GetHashCode()*10 + (int)State;
+            return Name.GetHashCode();
         }
     }
 }

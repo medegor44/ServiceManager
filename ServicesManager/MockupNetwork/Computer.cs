@@ -6,7 +6,7 @@ namespace ServicesManager.MockupNetwork
 {
     public class Computer : IComputer
     {
-        private Dictionary<string, IService> _services = new Dictionary<string, IService>();
+        private readonly Dictionary<string, IService> _services = new Dictionary<string, IService>();
 
         public Computer(string name, IEnumerable<IService> services)
         {
